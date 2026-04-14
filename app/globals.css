@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brasea Design Tokens */
+  --color-brasea-dark: #292624;
+  --color-brasea-terracota: #c56d3b;
+  --color-brasea-terra-mid: #b5693f;
+  --color-brasea-cream: #ede6d9;
+  --color-brasea-terra-light: #c56d3b;
+  --color-brasea-olive: #54584a;
+  --color-brasea-surface: #f5f2ee;
+  --color-brasea-text: #1c1b19;
+  --color-brasea-muted: #6e6860;
+  /* Superfície escura dos cards (seção s-icp e similares) */
+  --color-brasea-card: #191512;
+  /* Verde sálvia — título do benefício nos cards ICP */
+  --color-brasea-sage: #a5cdb7;
+  /* Verde pedra — texto de descrição secundária nos cards ICP */
+  --color-brasea-stone: #babdb5;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins), system-ui, sans-serif;
+
+  /* Animations */
+  --animate-float: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+:root {
+  --background: #f5f2ee;
+  --foreground: #1c1b19;
+  /* Figma — Green / green-10 (seção professor / fundo oliva) */
+  --Green-green-10: #2b2e25;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
