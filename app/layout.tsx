@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       "Brasea — Aprenda culinária profissional com aulas técnicas e IA 24h",
     description:
       "Aulas gravadas por chef com +20 anos e assistente de IA para tirar dúvidas culinárias a qualquer hora. Acesse pelo celular, sem instalar nada.",
-    images: [{ url: "/lp/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/lp/OG-image.png", width: 1200, height: 630 }],
     url: "https://brasea.com.br",
     type: "website",
   },
