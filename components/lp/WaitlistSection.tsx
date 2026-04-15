@@ -52,7 +52,7 @@ export function WaitlistSection() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start justify-center">
           {/* ── Card Fundador (esquerda) ── */}
           <div
-            className="w-full lg:w-[407px] shrink-0 rounded-xl border border-[#a75d32]/50 p-6 flex flex-col gap-5"
+            className="w-full lg:w-[407px] shrink-0 rounded-xl border border-[#a75d32]/50 p-6 flex flex-col gap-5 justify-center items-start h-[471px]"
             style={{
               background:
                 "linear-gradient(140deg, #15120f 2%, #37221a 44%, #59311b 99%)",
@@ -60,7 +60,7 @@ export function WaitlistSection() {
           >
             {/* Badge */}
             <div
-              className="inline-flex self-start items-center px-3 py-[5px] rounded-full border border-[rgba(224,180,99,0.3)] text-[11px] font-semibold tracking-[0.06em] uppercase text-[#efd8ad]"
+              className="inline-flex self-start items-center justify-center w-fit mt-0 mb-0 text-left px-3 py-[5px] rounded-full border border-[rgba(224,180,99,0.3)] text-[11px] font-semibold tracking-[0.06em] uppercase text-[#efd8ad]"
               style={{
                 background:
                   "linear-gradient(166deg, rgba(197,109,59,0.2) 0%, rgba(224,180,99,0.2) 100%)",

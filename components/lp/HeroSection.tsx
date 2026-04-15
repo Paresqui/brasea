@@ -11,7 +11,7 @@ export function HeroSection() {
     <section
       id="s-hero"
       data-section="s-hero"
-      className="relative w-full bg-brasea-dark min-h-screen flex items-center pt-[72px] overflow-x-clip lg:overflow-visible"
+      className="relative w-full bg-brasea-dark min-h-screen flex items-center pt-[72px] pb-[72px] overflow-x-clip lg:overflow-visible"
     >
       {/* Gradiente decorativo radial — glow terracota no fundo */}
       <div
@@ -195,7 +195,7 @@ export function HeroSection() {
               {/* Decoração — à direita do mockup, sobreposta à borda (lg+); menor em lg para não cortar em laptop estreito */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute z-5 hidden lg:block top-[4%] left-full ml-0 -translate-x-1/2 w-[100px] h-[110px] lg:w-[110px] lg:h-[120px] xl:w-[150px] xl:h-[165px] 2xl:w-[165px] 2xl:h-[180px]"
+                className="hidden"
               >
                 <Image
                   src="/lp/Decorative%20Element.webp"

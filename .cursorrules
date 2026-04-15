@@ -1,6 +1,9 @@
 # ============================================================
+
 # BRASEA — Landing Page
+
 # Cursor Rules | Next.js 14 + Tailwind CSS + Figma MCP
+
 # ============================================================
 
 ## CONTEXTO DO PROJETO
@@ -32,23 +35,24 @@ A referencia visual esta em: `docs/LP-Desktop.png`
 ## CONVENCAO DE IDs DE SECAO — OBRIGATORIO
 
 Toda `<section>` da LP DEVE ter:
+
 1. `id="s-[nome]"` — para navegacao por ancora
 2. `data-section="s-[nome]"` — para analytics de scroll
 
 ### Mapa de IDs (nao alterar)
 
-| ID              | Componente               |
-|-----------------|--------------------------|
-| `s-nav`         | NavBar.tsx               |
-| `s-hero`        | HeroSection.tsx          |
-| `s-features`    | FeaturesSection.tsx      |
-| `s-icp`         | IcpSection.tsx           |
-| `s-app-preview` | AppPreviewSection.tsx    |
-| `s-chef`        | ChefSection.tsx          |
-| `s-faq`         | FaqSection.tsx           |
-| `s-cta-mid`     | CtaMidSection.tsx        |
-| `s-waitlist`    | WaitlistSection.tsx      |
-| `s-footer`      | Footer.tsx               |
+| ID              | Componente            |
+| --------------- | --------------------- |
+| `s-nav`         | NavBar.tsx            |
+| `s-hero`        | HeroSection.tsx       |
+| `s-features`    | FeaturesSection.tsx   |
+| `s-icp`         | IcpSection.tsx        |
+| `s-app-preview` | AppPreviewSection.tsx |
+| `s-chef`        | ChefSection.tsx       |
+| `s-faq`         | FaqSection.tsx        |
+| `s-cta-mid`     | CtaMidSection.tsx     |
+| `s-waitlist`    | WaitlistSection.tsx   |
+| `s-footer`      | Footer.tsx            |
 
 ### Template base de componente de secao
 
@@ -61,11 +65,9 @@ export function NomeSection() {
       data-section="s-[nome]"
       className="w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24"
     >
-      <div className="max-w-screen-xl mx-auto">
-        {/* conteudo */}
-      </div>
+      <div className="max-w-screen-xl mx-auto">{/* conteudo */}</div>
     </section>
-  )
+  );
 }
 ```
 
@@ -128,6 +130,7 @@ docs/
 ## REGRAS DE CODIGO
 
 ### Geral
+
 - TypeScript estrito — sem `any`
 - Componentes sempre com named export (nao default export)
 - Props tipadas com `interface` ou `type`
@@ -135,22 +138,26 @@ docs/
 - Sem `style={{}}` exceto para variaveis CSS dinamicas
 
 ### Imagens
+
 - SEMPRE usar `next/image`
 - SEMPRE informar `width`, `height` e `alt`
 - Imagens do hero: adicionar `priority` prop
 - Formato: WebP, salvo em `/public/lp/`
 
 ### Tipografia
+
 - Fonte: Inter (next/font) — ja carregada no layout.tsx
 - Nunca importar fonte localmente no componente
 
 ### Botoes e CTAs
+
 - Variante primaria: `bg-brasea-terracota text-brasea-cream hover:bg-brasea-terra-mid`
 - Border radius: `rounded-xl`
 - Padding CTA: `px-8 py-4`
 - Transicao: `transition-colors duration-200`
 
 ### Formulario (s-waitlist)
+
 - Usar Server Action — nao fetch manual no cliente
 - Loading state com `useFormStatus`
 - Validacao de campos no servidor (zod recomendado)
@@ -158,6 +165,7 @@ docs/
 - Erro: mensagem inline abaixo do campo com problema
 
 ### Acessibilidade
+
 - Todo elemento interativo com `focus-visible:ring-2 focus-visible:ring-brasea-terracota`
 - Tamanho minimo de toque: `min-h-[44px] min-w-[44px]`
 - Icones decorativos: `aria-hidden="true"`
@@ -165,6 +173,7 @@ docs/
 - Labels de formulario: sempre com `htmlFor` associado ao `id` do input
 
 ### Performance
+
 - Componentes abaixo do fold: considerar `dynamic import` com `loading="lazy"`
 - LCP target: H1 do hero ou imagem do mockup em < 2.5s
 - Nao bloquear o main thread com scripts pesados
@@ -176,12 +185,12 @@ docs/
 Ordem das classes Tailwind: `base` → `sm:` → `md:` → `lg:` → `xl:`
 
 | Breakpoint | Width  | Uso                          |
-|-----------|--------|------------------------------|
-| base      | 375px  | Mobile — layout single col   |
-| sm        | 640px  | Tablets pequenos             |
-| md        | 768px  | Tablets — grid 2 col         |
-| lg        | 1024px | Desktop — sidebar, grid 3col |
-| xl        | 1280px | Desktop full — layout da LP  |
+| ---------- | ------ | ---------------------------- |
+| base       | 375px  | Mobile — layout single col   |
+| sm         | 640px  | Tablets pequenos             |
+| md         | 768px  | Tablets — grid 2 col         |
+| lg         | 1024px | Desktop — sidebar, grid 3col |
+| xl         | 1280px | Desktop full — layout da LP  |
 
 Max-width do conteudo: `max-w-screen-xl mx-auto`
 
@@ -190,6 +199,7 @@ Max-width do conteudo: `max-w-screen-xl mx-auto`
 ## FIGMA MCP — COMO USAR
 
 Ao construir uma secao:
+
 1. Referencie o frame no Figma com o mesmo ID da secao (ex: `s-hero`)
 2. Use `@Figma get frame s-[nome]` para extrair specs
 3. Aplique as specs usando os tokens de design acima (nao copie hex cru)
@@ -201,19 +211,21 @@ Ao construir uma secao:
 ## SEO
 
 A pagina deve ter no `layout.tsx` ou `page.tsx`:
+Toda page.tsx exporta const metadata com title, description e openGraph.
 
 ```ts
 export const metadata = {
-  title: 'Brasea — Aprenda culinaria profissional com aulas tecnicas e IA 24h',
-  description: 'Aulas gravadas por chef com +20 anos e assistente de IA para tirar duvidas culinarias a qualquer hora. Acesse pelo celular, sem instalar nada.',
+  title: "Brasea — Aprenda culinaria profissional com aulas tecnicas e IA 24h",
+  description:
+    "Aulas gravadas por chef com +20 anos e assistente de IA para tirar duvidas culinarias a qualquer hora. Acesse pelo celular, sem instalar nada.",
   openGraph: {
-    title: '...',
-    description: '...',
-    images: ['/lp/og-image.png'], // 1200x630px
-    url: 'https://brasea.com.br',
+    title: "...",
+    description: "...",
+    images: ["/lp/og-image.png"], // 1200x630px
+    url: "https://brasea.com.br",
   },
-  twitter: { card: 'summary_large_image' },
-}
+  twitter: { card: "summary_large_image" },
+};
 ```
 
 A secao `s-faq` deve incluir JSON-LD de schema.org/FAQPage.
@@ -228,5 +240,5 @@ A secao `s-faq` deve incluir JSON-LD de schema.org/FAQPage.
 - ❌ Nao usar `default export` em componentes de secao
 - ❌ Nao adicionar nova `<section>` sem o `id` e `data-section` corretos
 - ❌ Nao inventar IDs de secao — usar apenas os do mapa acima
-- ❌ Nao usar `style={{color: '#...'}}`  — usar classe Tailwind
+- ❌ Nao usar `style={{color: '#...'}}` — usar classe Tailwind
 - ❌ Nao fazer fetch de formulario no cliente — usar Server Action
