@@ -3,7 +3,7 @@ import Image from "next/image";
 const LEGAL_LINKS = [
   {
     label: "Segue-nos no nosso Instagram",
-    href: "https://instagram.com/brasea",
+    href: "https://www.instagram.com/brasea.app/",
     external: true,
   },
 ];
