@@ -1,14 +1,7 @@
 'use server'
 
-export type WaitlistFormState = {
-  success?: boolean
-  error?: string
-  email?: string
-  fieldErrors?: Partial<Record<'nome' | 'sobrenome' | 'email' | 'perfil', string>>
-}
-
-const initialState: WaitlistFormState = {}
-export { initialState }
+import { getSupabaseServerClient } from '@/lib/supabase/server'
+import type { WaitlistFormState } from '@/lib/waitlist/form-state'
 
 export async function submitWaitlist(
   _prevState: WaitlistFormState,
@@ -16,7 +9,7 @@ export async function submitWaitlist(
 ): Promise<WaitlistFormState> {
   const nome = (formData.get('nome') as string | null)?.trim() ?? ''
   const sobrenome = (formData.get('sobrenome') as string | null)?.trim() ?? ''
-  const email = (formData.get('email') as string | null)?.trim() ?? ''
+  const email = (formData.get('email') as string | null)?.trim().toLowerCase() ?? ''
   const whatsapp = (formData.get('whatsapp') as string | null)?.trim() ?? ''
   const perfil = (formData.get('perfil') as string | null)?.trim() ?? ''
 
@@ -32,14 +25,31 @@ export async function submitWaitlist(
   }
 
   try {
-    // TODO: Inserir na tabela 'waitlist' do Supabase:
-    //   { nome, sobrenome, email, whatsapp, perfil, created_at }
+    const supabase = getSupabaseServerClient()
+
+    const { error } = await supabase.from('waitlist').insert({
+      nome,
+      sobrenome,
+      email,
+      whatsapp: whatsapp || null,
+      perfil,
+    })
+
+    if (error) {
+      // 23505 = unique_violation (e-mail duplicado)
+      if (error.code === '23505') {
+        return { fieldErrors: { email: 'Este e-mail já está na lista de espera' } }
+      }
+
+      console.error('[waitlist] erro ao inserir no Supabase:', error)
+      return { error: 'Erro ao enviar. Por favor, tente novamente em instantes.' }
+    }
+
     // TODO: Enviar e-mail de confirmação via Resend
 
-    console.log('[waitlist] nova inscrição:', { nome, sobrenome, email, whatsapp, perfil })
-
     return { success: true, email }
-  } catch {
+  } catch (err) {
+    console.error('[waitlist] exceção:', err)
     return { error: 'Erro ao enviar. Por favor, tente novamente em instantes.' }
   }
 }

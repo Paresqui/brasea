@@ -1,8 +1,11 @@
 import Image from "next/image";
 
 const LEGAL_LINKS = [
-  { label: "Termos de Uso", href: "/termos-de-uso" },
-  { label: "Política de Privacidade", href: "/politica-de-privacidade" },
+  {
+    label: "Segue-nos no nosso Instagram",
+    href: "https://instagram.com/brasea",
+    external: true,
+  },
 ];
 
 function BraseaLogoSmall() {
@@ -49,6 +52,9 @@ export function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
+                  {...(link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="text-brasea-muted text-sm hover:text-brasea-cream transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brasea-terracota rounded-sm"
                 >
                   {link.label}

@@ -3,7 +3,8 @@
 import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { CheckCircle, ChevronDown, Loader2 } from 'lucide-react'
-import { submitWaitlist, initialState } from '@/app/actions/waitlist'
+import { submitWaitlist } from '@/app/actions/waitlist'
+import { initialWaitlistState } from '@/lib/waitlist/form-state'
 
 const INPUT_CLASS =
   'w-full h-11 bg-[#2e2b28] border border-white/10 rounded-lg px-3.5 text-sm text-brasea-cream ' +
@@ -41,7 +42,7 @@ function SubmitButton() {
  * Gerenciado via Server Action com feedback de sucesso/erro inline.
  */
 export function WaitlistForm() {
-  const [state, formAction] = useActionState(submitWaitlist, initialState)
+  const [state, formAction] = useActionState(submitWaitlist, initialWaitlistState)
 
   if (state.success) {
     return (
